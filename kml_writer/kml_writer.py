@@ -1,4 +1,4 @@
-class kml_header:
+class KmlHeader:
     # Create the Google Earth input file "new_animation.kml"
     new_animation = open(r'C:\Python\Google_Earth_Animator\new_animation.kml', 'w')
 
