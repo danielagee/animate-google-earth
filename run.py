@@ -1,4 +1,4 @@
-from kml_writer.kml_writer import KmlHeader
+from kml_writer.write_kml import KmlHeader
 
 # Triggering the entire project
 # Do this by python run.py
