@@ -1,11 +1,11 @@
-from kml_writer.write_kml import KmlHeader
+from kml_writer.write_kml import KmlWriter
 
 # Triggering the entire project
 # Do this by python run.py
 
 
 def run():
-    KmlHeader()
+    KmlWriter()
 
 
 if __name__ == '__main__':
