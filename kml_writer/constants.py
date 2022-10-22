@@ -1,5 +1,4 @@
-OUTPUT_PATH = 'c:\\python\\Google_Earth_Animator\\'
-OUTPUT_NAME = 'new_animation.kml'
+OUTPUT_FILE = 'c:\\python\\Google_Earth_Animator\\new_animation.kml'
 PATH_COLOR = 'bf00aaff'
 LINE_WIDTH = 5
 CAMERA_LONGITUDE = 1

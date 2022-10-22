@@ -2,9 +2,11 @@ class KmlWriter:
     import kml_writer.constants as writer_constants
     import kml_writer.kml_header_template as header_template
     import kml_writer.kml_animation_template as animation_template
+    import kml_writer.kml_body_template as body_template
+    import kml_writer.kml_footer_template as footer_template
 
     # Create the Google Earth input file "new_animation.kml"
-    new_animation = open(writer_constants.OUTPUT_PATH + writer_constants.OUTPUT_NAME, 'w')
+    new_animation = open(writer_constants.OUTPUT_FILE, 'w')
 
     # Add the header to the file
     new_animation.writelines(header_template.header1)
@@ -35,5 +37,28 @@ class KmlWriter:
         new_animation.writelines(animation_template.animation_loop2)
         new_animation.write(str(target_id))
         new_animation.writelines(animation_template.animation_loop3)
+
+    # Add the body transition to the file
+    new_animation.writelines(body_template.body)
+
+    # for loops for GPS coordinates and counting of placemark id.
+    # Placemark id is the data point ID number in the .kml file which aligns with
+    # targetId written before. For this, we have to use 4 sets of strings plus the
+    # Placemark id twice and the GPS coordinates. Templates for this are stored in
+    # kml_body_template.py
+
+    # Temporarily hard code the GPS coordinates and same number of loops as
+    # the target_id for loop
+    for placemark_id in range(1, 5):
+        new_animation.writelines(body_template.placemark_loop1)
+        new_animation.write(str(placemark_id))
+        new_animation.writelines(body_template.placemark_loop2)
+        new_animation.write(str(placemark_id))
+        new_animation.writelines(body_template.placemark_loop3)
+        new_animation.write(str('xxxN,xxxE,0 xxxN,xxxE,0'))
+        new_animation.writelines(body_template.placemark_loop4)
+
+    # Write the footer
+    new_animation.writelines(footer_template.footer)
 
     new_animation.close()
