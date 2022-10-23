@@ -1,0 +1,1 @@
+INPUT_FILE = 'C:\\Python\\GPS\\Track.kml'
