@@ -4,6 +4,7 @@ class KmlWriter:
     import kml_writer.kml_animation_template as animation_template
     import kml_writer.kml_body_template as body_template
     import kml_writer.kml_footer_template as footer_template
+    from kml_writer.read_kml import gps_coordinates_raw
 
     # Create the Google Earth input file "new_animation.kml"
     new_animation = open(writer_constants.OUTPUT_FILE, 'w')
@@ -47,15 +48,39 @@ class KmlWriter:
     # Placemark id twice and the GPS coordinates. Templates for this are stored in
     # kml_body_template.py
 
-    # Temporarily hard code the GPS coordinates and same number of loops as
-    # the target_id for loop
+    # Temporarily hard code the number of loops as the target_id for loop
     for placemark_id in range(1, 5):
         new_animation.writelines(body_template.placemark_loop1)
         new_animation.write(str(placemark_id))
         new_animation.writelines(body_template.placemark_loop2)
         new_animation.write(str(placemark_id))
         new_animation.writelines(body_template.placemark_loop3)
-        new_animation.write(str('xxxN,xxxE,0 xxxN,xxxE,0'))
+
+        # Test print to check formatting and proper import of gps_coordinates_raw
+        print(gps_coordinates_raw)
+
+        # Finds the position of the delimiter ' ' which differentiates the GPS coordinates.
+        space_index = gps_coordinates_raw.find(' ')
+        # Extracts the first GPS coordinate as gps_temp.
+        gps_temp = gps_coordinates_raw[0:space_index]
+        # Adds the mandatory suffix and stores the result as GPS coordinate 1.
+        gps1 = gps_temp + ',0'
+        # Test print to check formatting.
+        print(gps1)
+
+        # Removes the already captured GPS coordinate and remaining " " delimiter
+        gps_coordinates_raw = gps_coordinates_raw.removeprefix(gps_temp + ' ')
+
+        # Repeats the process built for GPS coordinate 1 to extract GPS coordinate 2.
+        space_index = gps_coordinates_raw.find(' ')
+        gps_temp = gps_coordinates_raw[0:space_index]
+        gps2 = gps_temp + ',0'
+        print(gps2)
+
+        # Combines GPS coordinate 1 and 2 to make the GPS pair required for the path.
+        print(str(gps1 + ' ' + gps2))
+        new_animation.write(str(gps1 + ' ' + gps2))
+
         new_animation.writelines(body_template.placemark_loop4)
 
     # Write the footer
