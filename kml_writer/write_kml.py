@@ -1,9 +1,9 @@
 class KmlWriter:
     import kml_writer.constants as writer_constants
-    import kml_writer.kml_header_template as header_template
-    import kml_writer.kml_animation_template as animation_template
-    import kml_writer.kml_body_template as body_template
-    import kml_writer.kml_footer_template as footer_template
+    import kml_writer.kml1_header_template as header_template
+    import kml_writer.kml2_animation_template as animation_template
+    import kml_writer.kml3_body_template as body_template
+    import kml_writer.kml4_footer_template as footer_template
     from kml_writer.read_kml import gps_coordinates_raw
     from kml_analysis.kml_analytics import gps_points
     from kml_analysis.kml_analytics import camera_latitude
@@ -53,7 +53,7 @@ class KmlWriter:
     # Placemark id is the data point ID number in the .kml file which aligns with
     # targetId written before. For this, we have to use 4 sets of strings plus the
     # Placemark id twice and the GPS coordinates. Templates for this are stored in
-    # kml_body_template.py
+    # kml3_body_template.py
 
     for placemark_id in range(1, gps_points):
         new_animation.writelines(body_template.placemark_loop1)
