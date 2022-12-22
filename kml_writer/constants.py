@@ -1,3 +1,4 @@
+NAME = ' Line Animation'
 PATH_COLOR = 'bf00aaff'
 LINE_WIDTH = 5
 CAMERA_HEADING = 0
