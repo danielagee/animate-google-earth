@@ -1,3 +1,7 @@
+https://developers.google.com/kml/documentation
+
+https://sites.google.com/site/kmltouring/animating-a-line
+
 Structure:\
 \
 +- kml_reader.py \
