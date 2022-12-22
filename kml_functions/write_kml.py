@@ -1,10 +1,10 @@
 class KmlWriter:
-    import kml_writer.constants as writer_constants
-    from kml_writer.read_kml import gps_coordinates_raw
-    from kml_writer.read_kml import gps_points
-    from kml_writer.read_kml import camera_latitude
-    from kml_writer.read_kml import camera_longitude
-    from kml_writer.read_kml import camera_altitude
+    import kml_functions.constants as writer_constants
+    from kml_functions.read_kml import gps_coordinates_raw
+    from kml_functions.read_kml import gps_points
+    from kml_functions.read_kml import camera_latitude
+    from kml_functions.read_kml import camera_longitude
+    from kml_functions.read_kml import camera_altitude
 
     def header_temp(h_name):
         head_temp = ['<?xml version="1.0" encoding="UTF-8"?>\n',
