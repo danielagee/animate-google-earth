@@ -1,5 +1,6 @@
 import linecache
 from statistics import median
+import kml_functions.constants as c
 
 #input_file = input('What is the GPS file to analyze?\n'
 #                   'Example: c:\\MyFolder\\track.kml\n')
@@ -43,4 +44,5 @@ max_longitude = max(longitude)
 min_longitude = min(longitude)
 latitude_distance = max_latitude-min_latitude
 longitude_distance = max_longitude-min_longitude
-camera_altitude = max(latitude_distance, longitude_distance)*110*1000*2
+#camera_altitude = max(latitude_distance, longitude_distance)*110*1000*2
+camera_altitude = c.ALTITUDE
