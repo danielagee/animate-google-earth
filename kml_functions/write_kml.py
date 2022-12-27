@@ -6,6 +6,11 @@ class KmlWriter:
     from kml_functions.read_kml import camera_longitude
     from kml_functions.read_kml import camera_altitude
 
+    #output_file = input('What is the GPS file to output?\n'
+    #                    'Example: Example: c:\\MyFolder\\track.kml\n')
+
+    output_file = 'C:\\Python\\GPS-files\\output_animation.kml'
+
     def header_temp(h_name):
         head_temp = [f'<?xml version="1.0" encoding="UTF-8"?>\n',
                      f'<kml xmlns="http://www.opengis.net/kml/2.2"\n  xmlns:gx="http://www.google.com/kml/ext/2.2">\n\n',
@@ -102,11 +107,6 @@ class KmlWriter:
         # Extracts the GPS coordinate as gps_temp.
         gps_temp = gps_coord_raw_temp[0:space_index]
         return gps_temp
-
-    #output_file = input('What is the GPS file to output?\n'
-    #                    'Example: Example: c:\\MyFolder\\track.kml\n')
-
-    output_file = 'C:\\Python\\GPS-files\\output_animation.kml'
 
     # Create the Google Earth input file
     new_animation = open(output_file, 'w')

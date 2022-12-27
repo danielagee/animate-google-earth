@@ -5,14 +5,20 @@ import kml_functions.constants as c
 #input_file = input('What is the GPS file to analyze?\n'
 #                   'Example: c:\\MyFolder\\track.kml\n')
 
-input_file = 'C:\\Python\\GPS\\kyiv_track.kml'
+input_file = 'C:\\Python\\GPS\\simple_kml2.kml'
 
-# extracts the data I need from line 19 of the recorded GPS file.
-gps_coordinates_raw = linecache.getline(input_file, 19)
-# removes the fixed prefix from the front of the data.
-gps_coordinates_raw = gps_coordinates_raw.removeprefix('        <coordinates>')
-# removes the fixed suffix from the end of the data.
-gps_coordinates_raw = gps_coordinates_raw.removesuffix('</coordinates>\n')
+
+def read_kml_track(file):
+    # extracts the data I need from line 19 of the recorded GPS file.
+    gps_coord_raw = linecache.getline(input_file, 19)
+    # removes the fixed prefix from the front of the data.
+    gps_coord_raw = gps_coord_raw.removeprefix('        <coordinates>')
+    # removes the fixed suffix from the end of the data.
+    gps_coord_raw = gps_coord_raw.removesuffix('</coordinates>\n')
+    return gps_coord_raw
+
+
+gps_coordinates_raw = read_kml_track(input_file)
 
 #Counts the number of GPS points by counting the ',' between lat-lon pairs.
 gps_points = gps_coordinates_raw.count(',')
