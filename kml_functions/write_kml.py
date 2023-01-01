@@ -113,7 +113,7 @@ class KmlWriter:
 
     # Add the header to the file
     new_animation.writelines(
-        header_temp(str(c.NAME)))
+        header_temp(str(c.CITIES_NAME)))
 
     # Describe the line
     new_animation.writelines(
